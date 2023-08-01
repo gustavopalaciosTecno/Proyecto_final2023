@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="d-flex flex-column align-items-center justify-content-between px-4 pt-4 pb-3 rounded-4 form-control border-info w-auto">
+    <h2>¿Estás seguro de que deseas eliminar la publicación?</h2>
+    <table>
+        <form method="POST" enctype="multipart/form-data" action="{% url 'post:eliminar_post' publicacion.id %}">
+            {% csrf_token %}   
+            {{ formPost }} 
+            <button class="btn btn-outline-info" type="submit">Confirmar eliminación</button>
+        </form>
+    </table>
+</div>
+
+{% endblock content %}

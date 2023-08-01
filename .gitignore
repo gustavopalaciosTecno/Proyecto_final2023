@@ -1,0 +1,19 @@
+#entorno virtual
+venv/
+entorno/ 
+env/
+ENV/
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+__pycache__/
+
+## base de datos
+local.py
+*.sqlite3
+*.db
+*.sqlite
+*.sql
+db.sqlite3
+db.sqlite3-journal
+texto.txt

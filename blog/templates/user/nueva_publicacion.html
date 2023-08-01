@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Artículos{% endblock %}
+
+
+{% block content %}
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="mt-5">
+  <h2 class="text-center text-info">Últimos Posteos </h2>
+  <!-- Aquí van tus tarjetas de publicaciones recientes -->
+</div>
+
+{% if user.is_authenticated %}
+<div class="d-flex justify-content-center mt-3">
+  <a href="{% url 'blog-apps-post:crear_post' %}" class="btn btn-outline-info">Crear una publicación</a>
+</div>
+{% else %}
+<div class="d-flex justify-content-center mt-3">
+  <a href="{% url 'login' %}" class="btn btn-outline-info">Iniciar sesión para crear una publicación</a>
+</div>
+{% endif %}
+
+<div class="d-flex justify-content-center mt-5 accordion">
+  <button class="btn btn-outline-info" type="submit">Ver todos los posteos</button>
+</div>
+<div class="my-5">
+  <h4 class="text-center">Buscar por categoría </h4>
+  <!-- Aquí va tu formulario de búsqueda por categoría -->
+</div>
+
+{% endblock content %}
+
+
+   
+{% endblock%}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="d-flex flex-column align-items-center justify-content-between px-4 pt-4 pb-3 rounded-4 form-control border-info w-auto">
+    <h1>Crear Publicacion</h1>
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ formPost.as_p }}
+
+        <button class="btn btn-outline-info" type="submit">Crear Publicacion</button>
+
+    </form>
+
+</div>
+
+{% endblock content %}

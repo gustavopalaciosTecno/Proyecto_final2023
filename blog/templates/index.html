@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="mt-5">
+  <h2 class="text-center text-info">Últimos Posteos</h2>
+  <!-- Aquí van tus tarjetas de publicaciones recientes -->
+</div>
+
+{% if user.is_authenticated %}
+<div class="d-flex justify-content-center mt-3">
+  <a href="{% url 'post:crear_post' %}" class="btn btn-outline-info">Crear una publicación</a>
+</div>
+
+{% else %}
+<div class="d-flex justify-content-center mt-3">
+  <a href="{% url 'user:login' %}" class="btn btn-outline-info">Iniciar sesión para crear una publicación</a>
+</div>
+{% endif %}
+
+<div class="d-flex justify-content-center mt-5 accordion">
+  <button class="btn btn-outline-info" type="submit"><a href="{% url 'post:post_list' %}">Ver todos los posteos</a></button>
+</div>
+<div class="my-5">
+  <h4 class="text-center">Buscar por categoría</h4>
+  <form method="get" action="{% url 'post:post_list' %}">
+    <select name="categoria" class="form-control">
+      <option value="" selected>Mostrar todas</option>
+      {% for categoria in categorias %}
+        <option value="{{ categoria.id }}">{{ categoria.titulo }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+  </form>
+</div>
+
+<div class="my-5">
+  <h4 class="text-center">Buscar por palabra clave</h4>
+  <form method="get" action="{% url 'post:post_list' %}">
+    <div class="input-group mb-3">
+      <input type="text" name="q" class="form-control" placeholder="Buscar publicaciones...">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="my-5">
+  <h2 class="text-center text-info">Categorías</h2>
+  <ul class="list-group">
+    {% for categoria in categorias %}
+      <li class="list-group-item">{{ categoria.titulo }}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div>
+    <h1 class="text-info">Grupo Pythoneers</h1>
+    <p>Este blog de noticias fue el proyecto final de la Etapa 2 del Informatorio</p>
+    <div class="d-flex justify-content-around mt-5">
+       <section class="d-flex flex-column">
+        <p>El grupo Pythoneers está conformado por:</p>
+        <ul>
+            <li class="list-group-item my-4">Fabian Yrala</li>
+            <li class="list-group-item my-4">Pedro Morinigo</li>
+            <li class="list-group-item my-4">Yamila Fogar</li>
+            <li class="list-group-item my-4">Daira Cuquejo</li>
+            <li class="list-group-item my-4">Federico Bazan</li>
+            <li class="list-group-item my-4">Gustavo Palacios</li>
+        </ul>
+       </section>
+       <section>
+        <img src="{% static '../media/src/about.png' %}" alt="about" width="300px">
+       </section>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="my-5">
+    <h4>Buscar Publicacion</h4>
+    <form method="get" action="{% url 'post:post_list2' %}">
+      <div class="input-group mb-3">
+        <input type="text" name="q" placeholder="Buscar publicaciones">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+      </div>
+    </form>
+</div>
+
+
+    <!--<button> 
+        <a href="/post/ver_post/{{p.id}}"> Ver Mas</a>
+    </button>-->
+ 
+    <br>
+    <div class="text-center">
+        {% for p in post %}
+        <h1>{{ p.titulo }}</h1>
+        <li>{{ p.contenido }}</li>
+        <li>{{ p.resumen }}</li>
+        <img src="{{ p.imagen.url }}" alt="{{ p.titulo }}" width="200">
+        <li>{{ p.fecha_creacion }}</li>
+        
+        {% if user.is_authenticated and p.autor == user %}
+            <a href="{% url 'post:editar_post' id=p.id %}" class="btn btn-outline-info">Editar esta publicación</a>
+            <a href="{% url 'post:eliminar_post' id=p.id %}" class="btn btn-outline-danger">Eliminar esta publicación</a>
+        {% endif %}
+        
+        <div>
+            <h4>Comentarios:</h4>
+            <ul>
+                {% for comentario in comentarios %}
+                    {% if comentario.post.id == p.id %}
+                       
+                            <p><strong>{{ comentario.autor }}</strong>: {{ comentario.contenido }}</p>
+                            <p>Fecha de creación: {{ comentario.fecha_creacion }}</p>
+                        
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    
+        {% if user.is_authenticated %}
+            <!-- Formulario para agregar un comentario a esta publicación -->
+            <form method="post" action="{% url 'post:realizar_comentario' post_id=p.id %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Comentar</button>
+            </form>
+        {% endif %}
+        {% endfor %}
+     
+   
+    </div>
+  
+   
+{% endblock %}
