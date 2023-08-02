@@ -17,7 +17,7 @@ urlpatterns = [
     #path('<int:post_id>/comentar/', views.realizar_comentario, name='realizar_comentario'),
     path('post/<int:post_id>/comentar/', views.realizar_comentario, name='realizar_comentario'),
     path('mostrar_categorias/', views.post_list, name='mostrar_categorias'),
-
+    path('contact/', views.contact_form, name='contact_form'),
    
     ]
 

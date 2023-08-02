@@ -8,7 +8,9 @@ from django import forms
 from django.forms import modelform_factory
 from django.core.paginator import Paginator
 from datetime import date
-
+from django.core.mail import send_mail
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def index(request):
     # Obtener los últimos posteos
@@ -162,5 +164,27 @@ def realizar_comentario(request, post_id):
         'form': form,
     }
     return render(request, 'post/realizar_comentario.html', context)
+
+def contact_form(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        # Aquí puedes agregar la lógica para enviar el correo electrónico con los datos del formulario.
+        # Por ejemplo:
+        send_mail(
+            'Formulario de contacto - ' + name,
+            'Email: ' + email + '\nMensaje: ' + message,
+            'tppythoneers@gmail.com',  # Remplaza esto con tu dirección de correo electrónico.
+            ['guspame2012@gmail.com'],  # Remplaza esto con la dirección de correo a la que deseas enviar el formulario.
+            fail_silently=False,
+        )
+
+        # Redirigir a la página de éxito (puedes crear una página de éxito en tu plantilla si lo deseas).
+        return HttpResponseRedirect(reverse('contact_form', kwargs={'message_sent': True}))
+    
+    # Si no se envió el formulario, simplemente renderizamos la plantilla del formulario.
+    return render(request, 'contact.html', {'message_sent': False})
 
 

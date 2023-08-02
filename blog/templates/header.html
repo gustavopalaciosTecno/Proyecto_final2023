@@ -18,18 +18,12 @@
             <a class="nav-link" href="{% url 'about' %} ">Sobre nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#destacados">Destacados</a>
+            <a class="nav-link" href="{% url 'post:post_list' %}">Publicaciones</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#destacados" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Categorías
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Categoría uno</a></li>
-              <li><a class="dropdown-item" href="#">Categoría dos</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Todas las Categorías</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'post:contact_form' %}">Contacto</a>
+          </li>
+           
           </li>
         </div>
         {% comment %} ####IMPORTANTE#### {% endcomment %}
