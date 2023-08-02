@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.core.files.images import get_image_dimensions
 from django import forms
 from .models import UserProfile
@@ -57,5 +57,15 @@ class UpdateAvatarForm(forms.ModelForm):
 class UpdateUserProfileForm(UpdateUserForm,UpdateAvatarForm):
     pass
 
+class ChangePasswordForm(PasswordChangeForm):
+    class Meta:
+        widgets = {
+            'old_password': forms.PasswordInput(attrs={'class': 'form-control'}),
+            'new_password1': forms.PasswordInput(attrs={'class': 'form-control'}),
+            'new_password2': forms.PasswordInput(attrs={'class': 'form-control'}),
+        }
+
+class RecuperarContrasenaForm(forms.Form):
+    email = forms.EmailField(label='Correo electrónico')
 ##UserChangeForm para editar los campos(fields) de django
 ##ModelForm para crear formularios personalizados
