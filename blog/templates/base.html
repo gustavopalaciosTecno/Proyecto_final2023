@@ -12,13 +12,16 @@
     <link rel="stylesheet" href="{% static 'bootstrap/css/style.css' %}">
 </head>
 <body>
+
     {% include "header.html" %}
     <div id="content" class="bg-dark d-flex align-items-center justify-content-center container">
         {% block content %}{% endblock content %}
+     
+    
     </div>
     {% include "footer.html" %}
     {% block extra_js %}{% endblock extra_js %}
-    
+   
     <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
 </body>
 </html>

@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% block headers %}
 
-<div class="mt-5">
-  <h2 class="text-center text-info">Últimos Posteos</h2>
-  <!-- Aquí van tus tarjetas de publicaciones recientes -->
-</div>
 
+
+{% endblock %}
+<div class="container">
 {% if user.is_authenticated %}
+<h1 style="color: rgb(238, 232, 232);Text-align:center;">Bienvenidos al Sitio Web</h1>
 <div class="d-flex justify-content-center mt-3">
-  <a href="{% url 'post:crear_post' %}" class="btn btn-outline-info">Crear una publicación</a>
+  
+  <a href="{% url 'post:crear_post' %}" class="btn btn-outline-info">¿Deseas crear una publicación?</a>
 </div>
 
 {% else %}
@@ -20,39 +22,28 @@
 
 <div class="d-flex justify-content-center mt-5 accordion">
   <button class="btn btn-outline-info" type="submit"><a href="{% url 'post:post_list' %}">Ver todos los posteos</a></button>
-</div>
-<div class="my-5">
-  <h4 class="text-center">Buscar por categoría</h4>
-  <form method="get" action="{% url 'post:post_list' %}">
-    <select name="categoria" class="form-control">
-      <option value="" selected>Mostrar todas</option>
-      {% for categoria in categorias %}
-        <option value="{{ categoria.id }}">{{ categoria.titulo }}</option>
-      {% endfor %}
-    </select>
-    <button type="submit" class="btn btn-primary mt-2">Buscar</button>
-  </form>
-</div>
+  
 
-<div class="my-5">
-  <h4 class="text-center">Buscar por palabra clave</h4>
-  <form method="get" action="{% url 'post:post_list' %}">
-    <div class="input-group mb-3">
-      <input type="text" name="q" class="form-control" placeholder="Buscar publicaciones...">
-      <div class="input-group-append">
-        <button type="submit" class="btn btn-primary">Buscar</button>
-      </div>
-    </div>
-  </form>
+  
 </div>
-
-<div class="my-5">
-  <h2 class="text-center text-info">Categorías</h2>
-  <ul class="list-group">
-    {% for categoria in categorias %}
-      <li class="list-group-item">{{ categoria.titulo }}</li>
-    {% endfor %}
-  </ul>
+  <div>
+    <br>
+    <h2>Una pequeña ciudad llamada Cognópolis</h2>
+<p>Había una vez una pequeña ciudad llamada Cognópolis, donde la inteligencia artificial (IA) había dejado de ser solo un concepto futurista para convertirse en una herramienta cotidiana y valiosa para sus habitantes. En Cognópolis, la IA estaba integrada en cada aspecto de la vida diaria, desde el transporte hasta la atención médica y la educación.</p>
+<br>
+<p>Un día, Lucas, un joven apasionado por la tecnología, llegó a la ciudad en busca de oportunidades para realizar su sueño de ser inventor. Al explorar las calles, se maravilló al ver la forma en que la IA estaba en todas partes, mejorando la eficiencia y la calidad de vida de sus habitantes. Decidió que quería aprender más sobre esta fascinante tecnología y se matriculó en la Universidad de Cognópolis, famosa por sus programas de IA.</p>
+<br>
+<p>En la universidad, Lucas se sumergió en el mundo de la inteligencia artificial, aprendiendo cómo las máquinas podían analizar grandes cantidades de datos para tomar decisiones informadas y predecir situaciones futuras. Descubrió cómo la IA impulsaba avances en áreas como la medicina, donde los diagnósticos y tratamientos eran más precisos y personalizados, y en la ecología, donde ayudaba a proteger el medio ambiente.</p>
+<br>
+<p>Un día, mientras participaba en un proyecto de investigación sobre energías renovables, Lucas encontró un antiguo molino de viento abandonado en las afueras de la ciudad. Comenzó a preguntarse si podría revivir esa tecnología con la ayuda de la IA. Entonces, se dedicó en cuerpo y alma a convertir el molino en una fuente de energía limpia y sostenible.</p>
+<br>
+<p>Con el apoyo de sus profesores y compañeros, Lucas diseñó un sistema inteligente que ajustaba la posición de las aspas del molino en función de los datos climáticos y la demanda de energía. La IA también permitía detectar fallos y realizar mantenimiento preventivo, garantizando el óptimo funcionamiento del molino en todo momento.</p>
+<br>
+<p>La noticia de su proyecto se difundió rápidamente por la ciudad, y pronto el molino de viento se convirtió en un símbolo del poder transformador de la inteligencia artificial. La gente comenzó a comprender aún más la importancia de utilizar herramientas de IA en la resolución de problemas, no solo en términos de eficiencia, sino también en la contribución a un mundo más sostenible y consciente.</p>
+<br>
+<p>La historia de Lucas y su molino de viento inspiró a otros jóvenes de Cognópolis a embarcarse en carreras en tecnología e inteligencia artificial. Con el tiempo, la ciudad se convirtió en un centro de innovación y desarrollo de IA, atrayendo a talentos de todo el mundo.</p>
+<br>
+<p>Y así, gracias al ingenio y la pasión de Lucas, Cognópolis demostró que la inteligencia artificial no era solo una herramienta, sino una aliada poderosa para la creación de un futuro mejor. Al integrar la IA en sus vidas, los ciudadanos aprendieron que, con un enfoque ético y responsable, podían lograr avances extraordinarios que beneficiaban a toda la humanidad. La inteligencia artificial se convirtió en un faro de esperanza, iluminando el camino hacia un mundo más inteligente y sostenible para todos.</p>
+  </div>
 </div>
-
 {% endblock content %}
