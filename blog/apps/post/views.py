@@ -181,7 +181,7 @@ def contact_form(request):
             fail_silently=False,
         )
 
-        # Redirigir a la página de éxito (puedes crear una página de éxito en tu plantilla si lo deseas).
+        #Redirigir a la página de éxito (puedes crear una página de éxito en tu plantilla si lo deseas).
         return HttpResponseRedirect(reverse('contact_form', kwargs={'message_sent': True}))
     
     # Si no se envió el formulario, simplemente renderizamos la plantilla del formulario.

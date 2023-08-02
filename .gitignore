@@ -9,7 +9,7 @@ ENV/
 __pycache__/
 
 ## base de datos
-local.py
+
 *.sqlite3
 *.db
 *.sqlite
