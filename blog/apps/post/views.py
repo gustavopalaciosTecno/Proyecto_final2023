@@ -12,6 +12,7 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+
 def index(request):
     # Obtener los últimos posteos
     posts = Post.objects.order_by('-fecha_publicacion')[:5]
@@ -171,20 +172,23 @@ def contact_form(request):
         email = request.POST.get('email')
         message = request.POST.get('message')
 
-        # Aquí puedes agregar la lógica para enviar el correo electrónico con los datos del formulario.
-        # Por ejemplo:
+       
         send_mail(
             'Formulario de contacto - ' + name,
             'Email: ' + email + '\nMensaje: ' + message,
-            'tppythoneers@gmail.com',  # Remplaza esto con tu dirección de correo electrónico.
-            ['guspame2012@gmail.com'],  # Remplaza esto con la dirección de correo a la que deseas enviar el formulario.
+            'project_manageer@protonmail.com',  
+            ['project_manageer@protonmail.com'],  
             fail_silently=False,
         )
 
-        #Redirigir a la página de éxito (puedes crear una página de éxito en tu plantilla si lo deseas).
+  
         return HttpResponseRedirect(reverse('contact_form', kwargs={'message_sent': True}))
     
-    # Si no se envió el formulario, simplemente renderizamos la plantilla del formulario.
+ 
     return render(request, 'contact.html', {'message_sent': False})
+
+
+
+
 
 
