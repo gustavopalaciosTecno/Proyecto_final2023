@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<div class="flex-container">
-    <!-- Formulario de búsqueda -->
-    <form action="{% url 'post:buscar_posts' %}" method="get">
-        <input type="text" name="filter" placeholder="Buscar posts...">
-        <button type="submit" class="btn btn-primary">Buscar publicación</button>
-    </form>
+
+<div  class="flex-container">
+    <br>
 </div>
     <div class="text-center">
+        <br>
+        <form action="{% url 'post:buscar_posts' %}" method="get" style="position: absolute!important;">
+            <input type="text" name="filter" placeholder="Buscar posts...">
+            <button type="submit" class="btn btn-primary">Buscar publicación</button>
+        </form>
+        <br>
+        <br>
         {% for p in post %}
         <h1>{{ p.titulo }}</h1>
         <li>{{ p.contenido }}</li>
