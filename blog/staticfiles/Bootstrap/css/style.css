@@ -23,6 +23,7 @@ header{
 }
 
 footer{
+    padding: 10px;
     height: 60px;
     padding: 10px 0;
     box-shadow: 50px 0 0 0 rgba(0,0,0,0.06), 0 -9px 10px 0 rgba(0,0,0,0.12);

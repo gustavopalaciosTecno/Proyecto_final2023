@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{{ titulo }}</h2>
+   
+    
+    {% if publicaciones %}
+        <ul>
+            {% for publicacion in publicaciones %}
+            <h1>{{ publicacion.titulo }}</h1>
+            <li>{{ publicacion.contenido }}</li>
+            <li>{{ publicacion.resumen }}</li>
+            <li>{{ publicacion.fecha_creacion }}</li>
+            <li>{{publicacion.autor}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron publicaciones que coincidan con el filtro.</p>
+    {% endif %}
+    <div>
+       <input type="hidden" name="separador"> 
+    </div>
+{% endblock %}

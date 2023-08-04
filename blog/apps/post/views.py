@@ -189,6 +189,23 @@ def contact_form(request):
 
 
 
+def filtered_publications(request):
+    filter_term = request.GET.get('filter', '')  
+    filtered_publications = Post.objects.filter(titulo__icontains=filter_term)
+
+    context = {
+        'publicaciones': filtered_publications,
+        'titulo': f'Publicaciones con título que contiene "{filter_term}"',
+        
+    }
+
+    return render(request, 'buscar_posts.html', context)
+
+
+
+
+
+
 
 
 
